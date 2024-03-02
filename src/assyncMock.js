@@ -11,6 +11,7 @@ const products = [
         procesamiento: "natural",
         altura: "1700m",
         region: "Fazenda Ambiental Fortaleza, Serra do Caracol, Sul de Minas",
+        stock: 18,
         disponible: "si"
     },
     {
@@ -25,6 +26,7 @@ const products = [
         procesamiento: "Lavado",
         altura: "1800m",
         region: "Finca El Diviso, regiòn de Nariño",
+        stock: 15,
         disponible: "si"
     },
     {
@@ -39,6 +41,7 @@ const products = [
         procesamiento: "natural",
         altura: "1600m",
         region: "Finca Palo Blanco de Ivan Ovalle, Huehuetenango",
+        stock: 13,
         disponible: "si"
     },
     {
@@ -53,6 +56,7 @@ const products = [
         procesamiento: "Honey",
         altura: "1700m",
         region: "Amazonas",
+        stock: 13,
         disponible: "si"
     },
     {
@@ -67,6 +71,7 @@ const products = [
         procesamiento: "Lavado",
         altura: "2000m",
         region: "Guji",
+        stock: 9,
         disponible: "si"
     },
     {
@@ -81,8 +86,91 @@ const products = [
         procesamiento: "natural",
         altura: "1850m",
         region: "Coperativa de caficultores Aguthi, Nyeri County",
+        stock: 10,
+        disponible: "si"
+    },
+    {
+        id: 201,
+        category: "cafeteras",
+        nombre: "Chemex",
+        img: "chemex.jpg",
+        precio: 88450,
+        descripcion: "Este método, permite preparar múltiples tazas de café nítidas, sin sedimentos ni notas amargas y muy buen cuerpo. Su diseño único y atemporal le ganó un lugar en el Museo de Arte Moderno de Nueva York.",
+        stock: 8,
+        disponible: "si"
+    },
+    {
+        id: 202,
+        category: "cafeteras",
+        nombre: "Hario V60",
+        img: "setV60.jpg",
+        precio: 85320,
+        descripcion: "Versátil y atractivo, el Kit V60 te permite realizar hasta 4 tazas de café. El Dripper V60 es el método ideal para tener un control total de la extracción, determinando el cuerpo, la textura y la intensidad de la bebida fina",
+        stock: 16,
+        disponible: "si"
+    },
+    {
+        id: 203,
+        category: "cafeteras",
+        nombre: "Aeropress",
+        img: "aeropress.jpg",
+        precio: 90450,
+        descripcion: "La Forma más simple de preparar café de calidad en casa o de viaje. Irrompible y facil de llevar a todos lados. Mandamos tu Aeropress a todo el país.",
+        stock: 5,
+        disponible: "si"
+    },
+    {
+        id: 204,
+        category: "cafeteras",
+        nombre: "Filtros para cafetera Chemex",
+        img: "filtrosChemex.jpg",
+        precio: 30450,
+        descripcion: "100 filtros de papel para cafetera Chemex",
+        stock: 19,
+        disponible: "si"
+    },
+    {
+        id: 205,
+        category: "cafeteras",
+        nombre: "Filtros para caftera V60",
+        img: "filtrosV60.jpg",
+        precio: 20340,
+        descripcion: "100 filtros de papel para cafetera Hario V60",
+        stock: 25,
+        disponible: "si"
+    },
+    {
+        id: 206,
+        category: "cafeteras",
+        nombre: "Filtros para Aeropress",
+        img: "filtrosAeropress.jpg",
+        precio: 90450,
+        descripcion: "350 filtros de papel para cafetera Aeropress",
+        stock: 32,
+        disponible: "si"
+    },
+
+    {
+        id: 301,
+        category: "molinos",
+        nombre: "Molino manual Timemore Chesnut C3",
+        img: "molinoManual.jpg",
+        precio: 90450,
+        descripcion: "Molino manual marca Timemore",
+        stock: 5,
+        disponible: "si"
+    },
+    {
+        id: 302,
+        category: "molinos",
+        nombre: "Molino Baratza Encore",
+        img: "molinoEncore1.jpg",
+        precio: 560450,
+        descripcion: "Molino eléctrico de la marca Baratza, se logran moliendas finas tipo espresso hasta moliendas gruesas como para Prensa Francesa",
+        stock: 5,
         disponible: "si"
     }
+
 ]
 
 
@@ -95,5 +183,21 @@ export const getProducts = () => {
         setTimeout(()=>{
             resolve(products)
         }, 1000)
+    })
+}
+
+export const getProductsById = (productId) => {
+    return new Promise(resolve => {
+        setTimeout(()=>{
+            resolve(products.find((prod) => prod.id === productId))
+        }, 1000)
+    })
+}
+
+export const getProductsByCategory = () => {
+    return new Promise(res => {
+        setTimeout(()=>{
+            res(products.filter((prod) => prod.category === category))
+        }, 1000)  
     })
 }

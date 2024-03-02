@@ -1,10 +1,10 @@
 
 const Item = (prod) => {
     return (
-        <div key={prod.id}>
-            <img src={`./src/assets/productsImg/coffee/${prod.img}`} alt={prod.nombre} style={{ width: 200 }} />
-            <p>{prod.img}</p>
+        <div>
+            <img src={`./src/assets/productsImg/${prod.category}/${prod.img}`} alt={prod.nombre} style={{ width: 300 }} />
             <h3>{prod.nombre}</h3>
+            <p>$ {prod.precio}</p>
             <button>Detalle</button>
         </div>
     )
