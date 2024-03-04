@@ -6,8 +6,18 @@ import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
+    const [titulo, setTitulo] = useState(greeting)
 
     const { catId } = useParams()
+
+    
+
+    useEffect(()=>{
+        catId?setTitulo(catId.replace(catId[0], catId[0].toUpperCase())):setTitulo(greeting)
+    }, [catId])
+
+    
+    
    
 
     
@@ -21,7 +31,7 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
         <>
-            <h2>{greeting}</h2>
+            <h2>{titulo}</h2>
             <ItemList products={products} />
         </>
 

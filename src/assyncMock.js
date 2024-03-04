@@ -95,14 +95,14 @@ const products = [
         nombre: "Chemex",
         img: "chemex.jpg",
         precio: 88450,
-        descripcion: "Este método, permite preparar múltiples tazas de café nítidas, sin sedimentos ni notas amargas y muy buen cuerpo. Su diseño único y atemporal le ganó un lugar en el Museo de Arte Moderno de Nueva York.",
+        descripcion: "Este método permite preparar múltiples tazas de café nítidas, sin sedimentos ni notas amargas y muy buen cuerpo. Su diseño único y atemporal le ganó un lugar en el Museo de Arte Moderno de Nueva York.",
         stock: 8,
         disponible: "si"
     },
     {
         id: 202,
         category: "cafeteras",
-        nombre: "Hario V60",
+        nombre: "Hario V60, kit vidrio",
         img: "setV60.jpg",
         precio: 85320,
         descripcion: "Versátil y atractivo, el Kit V60 te permite realizar hasta 4 tazas de café. El Dripper V60 es el método ideal para tener un control total de la extracción, determinando el cuerpo, la textura y la intensidad de la bebida fina",
@@ -115,7 +115,7 @@ const products = [
         nombre: "Aeropress",
         img: "aeropress.jpg",
         precio: 90450,
-        descripcion: "La Forma más simple de preparar café de calidad en casa o de viaje. Irrompible y facil de llevar a todos lados. Mandamos tu Aeropress a todo el país.",
+        descripcion: "La forma más simple de preparar café de calidad en casa o de viaje. Irrompible y facil de llevar a todos lados. Mandamos tu Aeropress a todo el país.",
         stock: 5,
         disponible: "si"
     },
