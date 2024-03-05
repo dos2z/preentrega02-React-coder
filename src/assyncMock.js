@@ -115,7 +115,7 @@ const products = [
         nombre: "Aeropress",
         img: "aeropress.jpg",
         precio: 90450,
-        descripcion: "La forma más simple de preparar café de calidad en casa o de viaje. Irrompible y facil de llevar a todos lados. Mandamos tu Aeropress a todo el país.",
+        descripcion: "La forma más simple de preparar café de calidad en casa o de viaje. Liviana, rápida y fácil de usar, la podes llevar a todos lados. Mandamos tu Aeropress a todo el país.",
         stock: 5,
         disponible: "si"
     },

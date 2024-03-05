@@ -2,27 +2,30 @@ import { useEffect, useState } from "react";
 import { getProducts, getProductsByCategory } from "../../assyncMock";
 import { useParams } from 'React-router-dom'
 import ItemList from "../ItemList/ItemList";
+import './ItemListContainer.css'
 
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
     const [titulo, setTitulo] = useState(greeting)
 
+
     const { catId } = useParams()
 
-    
 
-    useEffect(()=>{
-        catId?setTitulo(catId.replace(catId[0], catId[0].toUpperCase())):setTitulo(greeting)
+    //codigo para cambiar titulos por la categoria
+    useEffect(() => {
+        catId ? setTitulo(catId.replace(catId[0], catId[0].toUpperCase())) : setTitulo(greeting)
+
     }, [catId])
 
-    
-    
-   
-
-    
     useEffect(() => {
-        const asyncGetFunction = catId ? getProductsByCategory : getProducts 
+        document.title = `Phoenix Coffee Roasters | ${catId ?? ''}`
+    }, [catId])
+
+    //codigo para traer los produtos del asyncMok    
+    useEffect(() => {
+        const asyncGetFunction = catId ? getProductsByCategory : getProducts
         asyncGetFunction(catId)
             .then(res => {
                 setProducts(res)
@@ -32,8 +35,11 @@ const ItemListContainer = ({ greeting }) => {
     return (
         <>
             <h2>{titulo}</h2>
-            <ItemList products={products} />
+            <div className="itemListContainer">
+                <ItemList products={products} />
+            </div>
         </>
+
 
     )
 }

@@ -1,8 +1,12 @@
 import cart from "../../assets/icons/carrito/cart-check.png"
+import './CartWidget.css'
 
 const CartWidget = () => {
   return (
-    <div><img src={cart} alt="carrito" style={{width: 50}}/> 0 </div>
+    <div className="cartWidget">
+      <img src={cart} alt="carrito" className="cartWidgetImg" />
+      <span className="cartWidgetNumber">0</span>
+    </div>
   )
 }
 

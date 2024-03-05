@@ -1,0 +1,27 @@
+.cartWidget{
+    position: relative;
+    width: 60px;
+    padding: 10px;
+    cursor: pointer;
+}
+.cartWidget:hover{
+    border-radius: 10px;
+    background-color: #6e6e6e;
+}
+
+.cartWidgetImg{
+    width: 95%;
+}
+.cartWidgetNumber{
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    right: 0;
+    left: 0;
+    top: 2px; 
+    margin: auto;
+    padding: 2px;
+    background-color: white; 
+    border-radius: 50%;
+    font-weight: bold;
+}

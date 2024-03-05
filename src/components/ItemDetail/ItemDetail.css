@@ -1,0 +1,76 @@
+.itemDetail {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.itemDetailTitle {
+    font-size: 2rem;
+}
+.itemDetailNotas {
+    text-align: center;
+    font-style: italic;
+}
+.itemDetailDescripcion{
+    width: 95%;
+    max-width: 500px;
+    text-indent: prety;
+}
+
+.itemDetailImgContainer {
+    width: 100%;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    & img{
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 1/1;
+        border-radius: 10px;
+    }
+}
+.itemDetailPrecio {
+    font-size: 1.5rem;
+}
+.disponible{
+    color: #169d3f;
+}
+.noDisponible{
+    color: red;
+}
+
+
+.itemDetailContador {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    
+}
+.iDCcontrol{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid gray;
+    font-weight: bold;
+    background-color: white;
+
+
+}
+.iDCNumber {
+    padding-block: 10px;
+    
+}
+.iDCButton{
+    border: none;
+    background-color: white;
+    padding: 10px;
+    font-weight: bold;
+
+}
+
+.iDCaddCartButton{
+    padding: 10px;
+    font-weight: bold;
+
+}

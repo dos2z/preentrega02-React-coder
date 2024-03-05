@@ -1,13 +1,28 @@
 nav {
-   
+    height: 100px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: white;
+    
+
 }
 
 .brand {
     text-decoration: none;
     color: tomato;
+    padding: 10px;
+    border-radius: 10px;
+}
+.brand:hover{
+    background-color: #2c2b2b;
+}
+
+.linkCategoryContainer{
+    width: 600px; 
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .linkCategory {
@@ -15,6 +30,10 @@ nav {
     color: black;
     margin: 10px;
     padding: 10px;
-    outline: solid;
     border-radius: 10px;
+}
+
+.linkCategory:hover{
+    background-color: #2c2b2b;
+    color: white;
 }

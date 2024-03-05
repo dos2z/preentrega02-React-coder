@@ -1,6 +1,9 @@
 .itemList{
+    width: 75%;
+    min-width: 300px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 50px;
 }
+
