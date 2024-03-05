@@ -105,7 +105,7 @@ const products = [
         nombre: "Hario V60, kit vidrio",
         img: "setV60.jpg",
         precio: 85320,
-        descripcion: "Versátil y atractivo, el Kit V60 te permite realizar hasta 4 tazas de café. El Dripper V60 es el método ideal para tener un control total de la extracción, determinando el cuerpo, la textura y la intensidad de la bebida fina",
+        descripcion: "Versátil y atractivo, el Kit V60 te permite realizar hasta 4 tazas de café. El dripper Hario V60 es el método ideal para tener un control total de la extracción, determinando el cuerpo, la textura y la intensidad, logrando crear una bebida fina",
         stock: 16,
         disponible: "si"
     },

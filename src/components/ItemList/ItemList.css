@@ -1,5 +1,6 @@
 .itemList{
-    width: 75%;
+    width: 85%;
+    max-width: 1200px;
     min-width: 300px;
     display: flex;
     justify-content: space-evenly;

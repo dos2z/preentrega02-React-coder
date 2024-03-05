@@ -15,7 +15,7 @@
 .itemDetailDescripcion{
     width: 95%;
     max-width: 500px;
-    text-indent: prety;
+    text-wrap: pretty;
 }
 
 .itemDetailImgContainer {
@@ -41,36 +41,3 @@
 }
 
 
-.itemDetailContador {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    
-    
-}
-.iDCcontrol{
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid gray;
-    font-weight: bold;
-    background-color: white;
-
-
-}
-.iDCNumber {
-    padding-block: 10px;
-    
-}
-.iDCButton{
-    border: none;
-    background-color: white;
-    padding: 10px;
-    font-weight: bold;
-
-}
-
-.iDCaddCartButton{
-    padding: 10px;
-    font-weight: bold;
-
-}
