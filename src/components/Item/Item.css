@@ -33,9 +33,13 @@
 
 .detailButton {
     text-decoration: none;
-    background-color: rgb(66, 62, 190);
+    background-color: #423ebe;
     padding: 5px;
     margin-bottom: 10px;
-    color: black;
+    color: white;
     border-radius: 5px;
 }
+.detailButton:hover {
+    background-color: #2d298f;
+}
+
