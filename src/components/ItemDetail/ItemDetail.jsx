@@ -1,11 +1,14 @@
 
 import './ItemDetail.css'
 import ItemCount from "../ItemCount/ItemCount"
+import { useCart } from '../../context/CartContext'
+
 
 const ItemDetail = (product) => {
+  const {addItem, isInCart }= useCart()
 
-  let disponible
-  product.stock?disponible='disponible':disponible='noDisponible'
+  let disponible;
+  product.stock?disponible='disponible':disponible='noDisponible';
 
   return (
     <div className="itemDetail">
@@ -18,7 +21,7 @@ const ItemDetail = (product) => {
 
       <p className="itemDetailPrecio">$ {product.precio ?? product.precio250g}</p>
       <p className={disponible}>Disponibles: {product.stock}</p>
-      <ItemCount stock={product.stock}/>
+      <ItemCount props={product}/>
 
 
     </div>

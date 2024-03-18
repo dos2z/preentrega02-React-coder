@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { getProducts, getProductsByCategory } from "../../assyncMock";
-import { useParams } from 'React-router-dom'
+import { useParams } from 'React-router-dom';
 import ItemList from "../ItemList/ItemList";
-import './ItemListContainer.css'
+import Loading from "../Loading/Loading";
+import './ItemListContainer.css';
 
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
     const [titulo, setTitulo] = useState(greeting)
+    const [loading, setLoading] = useState(true)
+
+
 
 
     const { catId } = useParams()
@@ -25,12 +29,21 @@ const ItemListContainer = ({ greeting }) => {
 
     //codigo para traer los produtos del asyncMok    
     useEffect(() => {
+        setLoading(true)
         const asyncGetFunction = catId ? getProductsByCategory : getProducts
         asyncGetFunction(catId)
             .then(res => {
                 setProducts(res)
             })
+            .catch((err) => { console.log(err); })
+            .finally(()=>{setLoading(false)})
     }, [catId]);
+
+    if (loading) {
+        
+        return  <Loading />
+                
+    }
 
     return (
         <>
