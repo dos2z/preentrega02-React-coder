@@ -1,0 +1,33 @@
+.CartItem{
+    margin: 20px;
+    border-bottom: solid 1px #fefefe;
+}
+
+.CartItem>div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.CartItem__precio{
+    font-size: 1.5rem;
+}
+
+.CartItem__quantity {
+    display: flex;
+    justify-content: center;
+    
+    border: solid;
+    background-color: white;
+    & button {
+        width: 15px;
+    }
+    & p{
+        width: 48px;
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+    }
+}

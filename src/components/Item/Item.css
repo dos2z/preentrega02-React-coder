@@ -16,8 +16,10 @@
 
 .item h3 {
     text-align: center;
+    width: 95%;
     padding-top: 5px;
     margin-bottom: 20px;
+    text-wrap: pretty;
 }
 
 .itemPrice {

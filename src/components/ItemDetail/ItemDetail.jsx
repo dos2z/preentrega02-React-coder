@@ -21,7 +21,7 @@ const ItemDetail = (product) => {
 
       <p className="itemDetailPrecio">$ {product.precio ?? product.precio250g}</p>
       <p className={disponible}>Disponibles: {product.stock}</p>
-      <ItemCount props={product}/>
+      <ItemCount product={product}/>
 
 
     </div>

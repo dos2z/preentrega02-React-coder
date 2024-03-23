@@ -1,15 +1,16 @@
 import './ItemCount.css'
+import { Link } from 'React-router-dom'
 import { useState } from 'react'
 import { useCart } from '../../context/CartContext'
 
-const ItemCount = ({ props }) => {
-  const { cart, addItem, isInCart } = useCart()
-console.log(cart);
+const ItemCount = ({ product }) => {
+  const { addItem } = useCart()
+
 
   const [contador, setContador] = useState(1)
 
   const increment = () => {
-    if (contador < props.stock) {
+    if (contador < product.stock) {
       setContador(contador + 1)
     }
   }
@@ -18,16 +19,18 @@ console.log(cart);
       setContador(contador - 1)
     }
   }
-
+  
   const addToCart = () => {
     let prodToAdd = {
-      id: props.id,
-      nombre: props.nombre,
+      id: product.id,
+      category: product.category,
+      nombre: product.nombre,
       quantity: contador,
-      precio: props.precio250g,
+      precio: product.precio250g??product.precio,
+      img: product.img,
+      stock: product.stock
     }
-    prodToAdd.subtotal = prodToAdd.precio * prodToAdd.quantity;
-    addItem(prodToAdd)
+    addItem(prodToAdd);
   }
 
   return (
@@ -38,6 +41,7 @@ console.log(cart);
         <button onClick={increment} className="iDCButton"> + </button>
       </div>
       <button className="iDCaddCartButton" onClick={addToCart}>Agregar al carrito</button>
+      <Link to="/cart">Ver carrito</Link>
     </div>
   )
 }
