@@ -1,0 +1,56 @@
+.Checkout_h1_message {
+    text-align: center;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.Checkout {
+    background: url("../../assets/miscellaneous/Imagen_de_valeria_aksakovaa.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: black;
+    padding: 20px;
+    height: 120%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & h1 {
+        align-self: start;
+        color: white;
+    }
+    & form{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    & input{
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin: 10px;
+        padding: 5px;
+        border: none;
+        border-bottom: solid 3px #423ebe;
+    }
+    & input::placeholder{
+        font-weight: bold;
+    }
+    & button{
+    background-color: #423ebe;
+    padding: 5px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    }
+    & button:hover{
+        cursor: pointer;
+        background-color: #40b850;
+        outline: solid 2px black;
+        color: black;
+    }
+}

@@ -4,15 +4,13 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([])
-    
+
 
     // funcion que agrega el producto al carrito
     const addItem = (prodToAdd) => {
         if (!isInCart(prodToAdd.id)) {
             setCart([...cart, prodToAdd])
-        } else {
-            console.log("Este producto ya esta en el carrito. Deberias aumentar su cantidad");
-        }
+        } 
     }
     //pregunta si existe el producto en el carrito
     const isInCart = (id) => {
@@ -27,18 +25,29 @@ export const CartProvider = ({ children }) => {
     const clearCart = () => {
         setCart([])
     }
-    // funcion que modifica la cantidad del producto
-    const modifyQuantity = (prod, quant)=>{
-        let cloneProd = {...prod};
-        deleteItem(prod.id)
-        cloneProd.quantity = quant;
-        console.log(quant);
-        console.log("-------------");
-        console.log(cloneProd);
-        console.log(cloneProd.quantity);
-        //setCart([...cart, cloneProd])
+    // funcion constructora de producto
+    function prodAdded(id, category, nombre, quantity, precio, img, stock) {
+        this.id = id;
+        this.category = category;
+        this.nombre = nombre;
+        this.quantity = quantity;
+        this.precio = precio;
+        this.img = img;
+        this.stock = stock;
     }
-    
+    // funcion que modifica cantidad del producto
+    const modifyQuantity = (id, newQuantity) => {
+        const cartUpdated = cart.map((prod) =>{
+            if(prod.id === id){
+                return {...prod, quantity: newQuantity}
+            }else{
+                return prod
+            }
+        }) 
+        setCart(cartUpdated)
+    }
+
+
 
     //funcion que toma la cantidad total de productos
     const getTotalQuantity = () => {
@@ -71,7 +80,8 @@ export const CartProvider = ({ children }) => {
             clearCart,
             totalQuantity,
             finalPrice,
-            modifyQuantity 
+            prodAdded,
+            modifyQuantity
         }}>
             {children}
         </CartContext.Provider>

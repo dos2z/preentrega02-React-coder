@@ -5,8 +5,11 @@
 }
 
 body{
-    background-color: #edd9bc;
-}
+    
+    background-color: #f7f3ed;
+/*     background: url("../src/assets/miscellaneous/Imagen_de_valeria_aksakovaa.jpg");
+ */    background-size: contain;
+}   
 
 .ItemListContainer__h2 {
     text-align: center;

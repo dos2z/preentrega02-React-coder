@@ -1,14 +1,18 @@
 
 import './ItemDetail.css'
 import ItemCount from "../ItemCount/ItemCount"
-import { useCart } from '../../context/CartContext'
+
 
 
 const ItemDetail = (product) => {
-  const {addItem, isInCart }= useCart()
+  
+
 
   let disponible;
-  product.stock?disponible='disponible':disponible='noDisponible';
+  let disponibleClass;
+
+  product.stock?disponible=true:disponible=false;
+  disponible?disponibleClass='disponible':disponibleClass='noDisponible';
 
   return (
     <div className="itemDetail">
@@ -18,10 +22,9 @@ const ItemDetail = (product) => {
       </div>
       <p className="itemDetailNotas">{product.notas}</p>
       <p className="itemDetailDescripcion">{product.descripcion}</p>
-
       <p className="itemDetailPrecio">$ {product.precio ?? product.precio250g}</p>
-      <p className={disponible}>Disponibles: {product.stock}</p>
-      <ItemCount product={product}/>
+      <p className={disponibleClass}>Disponibles: {product.stock}</p>
+      {disponible?<ItemCount product={product} />:<h4>Producto fuera de stock</h4>}
 
 
     </div>

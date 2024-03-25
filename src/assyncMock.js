@@ -201,3 +201,16 @@ export const getProductsByCategory = (category) => {
         }, 500)  
     })
 }
+
+
+//Trae los detalles del asyncMock -> para usar en ItemDetailContainer.jsx
+    /* useEffect(() => {
+        setLoading(true)
+        getProductsById(Number(prodId))
+            .then(res => {
+                setProduct(res)
+            })
+
+            .catch(err => console.log(err))
+            .finally(() => { setLoading(false) })
+    }, [prodId]) */

@@ -3,34 +3,31 @@ import './CartItem.css'
 import React, { useEffect, useState } from 'react'
 
 const CartItem = (prod) => {
-    const { cart, deleteItem,  modifyQuantity  } = useCart()
+    const { cart, deleteItem, modifyQuantity } = useCart()
     const [itemQuantity, setItemQuantity] = useState(prod.quantity)
     const [subtotal, setSubtotal] = useState(prod.precio * prod.quantity)
-    const [product, setProduct] = useState(prod)
+
 
 
 
     const eliminar = () => {
-        deleteItem(prod.id)
+        deleteItem(prod.id)    
     }
-
-
-    const [cant, setCant] = useState(prod.quantity)
 
     const decrement = () => {
         if (1 < itemQuantity) {
             setItemQuantity(itemQuantity - 1)
-            
         }
     }
     const increment = () => {
-        if (itemQuantity < prod.stock) {
-            setItemQuantity(itemQuantity + 1)
-            //modifyQuantity(prod, itemQuantity);
-        }
+         if (itemQuantity < prod.stock) {
+            setItemQuantity(itemQuantity + 1)    
+        }    
     }
 
+
     useEffect(() => {
+        modifyQuantity(prod.id, itemQuantity)
         setSubtotal(itemQuantity * prod.precio)
     }, [itemQuantity])
 

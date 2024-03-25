@@ -2,6 +2,13 @@ import { Link } from 'React-router-dom'
 import './Item.css'
 
 const Item = (prod) => {
+
+    let disponible;
+    let disponibleClass;
+
+    prod.stock ? disponible = true : disponible = false;
+    disponible ? disponibleClass = 'disponible' : disponibleClass = 'noDisponible';
+
     return (
         <div className='item'>
             <div className='itemImgContainer'>
@@ -9,9 +16,13 @@ const Item = (prod) => {
             </div>
             <h3>{prod.nombre}</h3>
             <p className='itemPrice'>$ {prod.precio ?? prod.precio250g}</p>
-            <div className='itemButtonContainer'>
-                <Link to={`/detalle/${prod.id}`} className='detailButton'>Ver detalle</Link>
-            </div>
+            {disponible
+                ? <div className='itemButtonContainer'>
+                    <Link to={`/detalle/${prod.id}`} className='detailButton'>Ver detalle</Link>
+                </div>
+                : <h4 className='noDisponible'>No disponible</h4>
+            }
+
 
         </div>
     )

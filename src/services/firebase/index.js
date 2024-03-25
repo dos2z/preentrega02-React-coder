@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB_ZZRvQc4hDhOL4yVNcK0htZ5lw40cAgE",
-  authDomain: "react-entregafinal-coderhouse.firebaseapp.com",
-  projectId: "react-entregafinal-coderhouse",
-  storageBucket: "react-entregafinal-coderhouse.appspot.com",
-  messagingSenderId: "883598018144",
-  appId: "1:883598018144:web:23baf9be217689abc9e505"
+  apiKey: import.meta.env.VITE_REACT_API_KEY,
+  authDomain: import.meta.env.VITE_REACT_AUTH_DOMAIN,
+  projectId: "react-entregafinal-coderhouse",/* import.meta.env.VITE_REACT_PROJECT_ID, */
+  storageBucket: import.meta.env.VITE_REACT_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_REACT_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_REACT_APP_ID
 };
 
 // Initialize Firebase

@@ -1,20 +1,18 @@
 import './ItemListContainer.css';
 import { useEffect, useState } from "react";
-import { getProducts, getProductsByCategory } from "../../assyncMock";
+//import { getProducts, getProductsByCategory } from "../../assyncMock";
 import { useParams } from 'React-router-dom';
 import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
 
+import { db } from '../../services/firebase';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
     const [titulo, setTitulo] = useState(greeting)
     const [loading, setLoading] = useState(true)
-
-
-
-
     const { catId } = useParams()
 
 
@@ -28,22 +26,30 @@ const ItemListContainer = ({ greeting }) => {
         document.title = `Phoenix Coffee Roasters | ${catId ?? ''}`
     }, [catId])
 
-    //codigo para traer los produtos del asyncMok    
+    //Traer productos de firestore
+
     useEffect(() => {
         setLoading(true)
-        const asyncGetFunction = catId ? getProductsByCategory : getProducts
-        asyncGetFunction(catId)
-            .then(res => {
-                setProducts(res)
+        const collectionRef = catId
+        ? query(collection(db, "products"), where("category", "==", catId) )
+        :collection(db, "products")
+        getDocs(collectionRef)
+            .then((response) => {
+                const products = response.docs.map((doc) => {
+                    return { id: doc.id, ...doc.data() }
+                })
+                setProducts(products)
             })
             .catch((err) => { console.log(err); })
-            .finally(()=>{setLoading(false)})
+            .finally(() => { setLoading(false) })
     }, [catId]);
 
+
+    
     if (loading) {
-        
-        return  <Loading />
-                
+
+        return <Loading />
+
     }
 
     return (

@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { useCart } from '../../context/CartContext'
 
 const ItemCount = ({ product }) => {
-  const { addItem } = useCart()
-
-
+  const { addItem, prodAdded, cart } = useCart()
   const [contador, setContador] = useState(1)
 
+  //funcionamiento del contador
   const increment = () => {
     if (contador < product.stock) {
       setContador(contador + 1)
@@ -19,29 +18,33 @@ const ItemCount = ({ product }) => {
       setContador(contador - 1)
     }
   }
-  
+//agrega el producto al carrito
   const addToCart = () => {
-    let prodToAdd = {
-      id: product.id,
-      category: product.category,
-      nombre: product.nombre,
-      quantity: contador,
-      precio: product.precio250g??product.precio,
-      img: product.img,
-      stock: product.stock
-    }
+    let precio = product.precio250g ?? product.precio
+    const prodToAdd = new prodAdded(product.id,
+      product.category,
+      product.nombre,
+      contador,
+      precio,
+      product.img,
+      product.stock)
     addItem(prodToAdd);
   }
 
   return (
     <div className="itemDetailContador">
-      <div className="iDCcontrol">
-        <button onClick={decrement} className="iDCButton"> - </button>
-        <p className="iDCNumber">{contador}</p>
-        <button onClick={increment} className="iDCButton"> + </button>
+      {cart.length == 0 
+      ?<div>
+        <div className="iDCcontrol">
+          <button onClick={decrement} className="iDCButton"> - </button>
+          <p className="iDCNumber">{contador}</p>
+          <button onClick={increment} className="iDCButton"> + </button>
+        </div>
+        <button className="iDCaddCartButton" onClick={addToCart}>Agregar al carrito</button>
       </div>
-      <button className="iDCaddCartButton" onClick={addToCart}>Agregar al carrito</button>
-      <Link to="/cart">Ver carrito</Link>
+      :<Link to="/cart" >
+        <button className="iDCviewCart">Ver carrito</button>
+      </Link>}
     </div>
   )
 }
