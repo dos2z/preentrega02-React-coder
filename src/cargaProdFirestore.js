@@ -1,6 +1,7 @@
 
-/* Programita para cargar todos los productos automáticamente */
+/* Programita para cargar todos los productos automáticamente a la base de datos */
 
+//ejecutar con Node
 
 
 import { db } from "./services/firebase/index.js"
@@ -167,5 +168,4 @@ agregarProductos()
     .catch((error)=>{
         console.log("Se produjo un error" + error);
     })
-
 

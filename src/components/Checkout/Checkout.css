@@ -3,6 +3,7 @@
     background-color: black;
     color: white;
     border-radius: 10px;
+    align-self: stretch;
 }
 
 .Checkout {
@@ -54,3 +55,4 @@
         color: black;
     }
 }
+

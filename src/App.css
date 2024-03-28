@@ -1,14 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,500;0,700;1,300;1,700&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
 }
 
 body{
     
     background-color: #f7f3ed;
-/*     background: url("../src/assets/miscellaneous/Imagen_de_valeria_aksakovaa.jpg");
- */    background-size: contain;
 }   
 
 .ItemListContainer__h2 {

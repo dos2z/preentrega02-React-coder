@@ -1,8 +1,12 @@
-.itemDetailContador > div{
+.IDCoptions{
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 5px;
     
+}
+.IDCbuttons{
+    display: flex;
 }
 .iDCcontrol{
     display: flex;
@@ -29,5 +33,17 @@
     padding: 10px;
     font-weight: bold;
     cursor: pointer;
+}
+.visible{
+    width: 100%;
+    & select{
+        width: 100%;
+        padding: 5px;
+        font-size: 16px;
+    }
+}
+
+.noVisible{
+    display: none;
 }
 

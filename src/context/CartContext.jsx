@@ -25,16 +25,7 @@ export const CartProvider = ({ children }) => {
     const clearCart = () => {
         setCart([])
     }
-    // funcion constructora de producto
-    function prodAdded(id, category, nombre, quantity, precio, img, stock) {
-        this.id = id;
-        this.category = category;
-        this.nombre = nombre;
-        this.quantity = quantity;
-        this.precio = precio;
-        this.img = img;
-        this.stock = stock;
-    }
+  
     // funcion que modifica cantidad del producto
     const modifyQuantity = (id, newQuantity) => {
         const cartUpdated = cart.map((prod) =>{
@@ -80,7 +71,6 @@ export const CartProvider = ({ children }) => {
             clearCart,
             totalQuantity,
             finalPrice,
-            prodAdded,
             modifyQuantity
         }}>
             {children}

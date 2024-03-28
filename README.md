@@ -10,3 +10,6 @@ en el checkout el cliente completa sus datos para el envío y genera una orden q
 El ecomerce esta construido en React y utiliza una base de datos generada con firebase
 
 Los estilos estan creados con CSS puro y vinculados a cada componente
+
+Como comentario aparte, a partir del código para generar la orden de compra visto en la clase de firebase 2 desarrolle unas líneas de código para cargar de forma automática los productos a la base de datos. esta en el archivo cargaProdFirestore.js.
+El únco problema que tiene es que me cargo los productos en un orden que yo no buscaba y eso se ve reflejado en cómo se muestran en el catálogo

@@ -4,6 +4,7 @@ import ItemCount from "../ItemCount/ItemCount"
 
 
 
+
 const ItemDetail = (product) => {
   
 
@@ -24,7 +25,10 @@ const ItemDetail = (product) => {
       <p className="itemDetailDescripcion">{product.descripcion}</p>
       <p className="itemDetailPrecio">$ {product.precio ?? product.precio250g}</p>
       <p className={disponibleClass}>Disponibles: {product.stock}</p>
-      {disponible?<ItemCount product={product} />:<h4>Producto fuera de stock</h4>}
+     
+      {disponible
+      ?<ItemCount product={product} />
+      :<h4>Producto fuera de stock</h4>}
 
 
     </div>

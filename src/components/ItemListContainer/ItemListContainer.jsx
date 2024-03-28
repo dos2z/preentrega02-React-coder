@@ -1,18 +1,16 @@
 import './ItemListContainer.css';
 import { useEffect, useState } from "react";
-//import { getProducts, getProductsByCategory } from "../../assyncMock";
 import { useParams } from 'React-router-dom';
 import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
-
-import { db } from '../../services/firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { getProducts } from '../../services/firebase/firebase';
+import { useAsync } from '../../hooks/useAsync';
 
 
 const ItemListContainer = ({ greeting }) => {
-    const [products, setProducts] = useState([]);
+    //const [products, setProducts] = useState([]);
     const [titulo, setTitulo] = useState(greeting)
-    const [loading, setLoading] = useState(true)
+    //const [loading, setLoading] = useState(true)
     const { catId } = useParams()
 
 
@@ -27,36 +25,23 @@ const ItemListContainer = ({ greeting }) => {
     }, [catId])
 
     //Traer productos de firestore
+    const getProductFromFirestore = ()=> getProducts(catId);
 
-    useEffect(() => {
-        setLoading(true)
-        const collectionRef = catId
-        ? query(collection(db, "products"), where("category", "==", catId) )
-        :collection(db, "products")
-        getDocs(collectionRef)
-            .then((response) => {
-                const products = response.docs.map((doc) => {
-                    return { id: doc.id, ...doc.data() }
-                })
-                setProducts(products)
-            })
-            .catch((err) => { console.log(err); })
-            .finally(() => { setLoading(false) })
-    }, [catId]);
-
+    const {data, error, loading} = useAsync(getProductFromFirestore, [catId])
 
     
     if (loading) {
-
         return <Loading />
-
+    }
+    if (error) {
+        return <h1>Hubo un error</h1>
     }
 
     return (
         <>
             <h2 className="ItemListContainer__h2">{titulo}</h2>
             <div className="itemListContainer">
-                <ItemList products={products} />
+                <ItemList products={data} />
             </div>
         </>
 

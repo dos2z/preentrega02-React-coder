@@ -1,49 +1,33 @@
-import { useCart } from '../../../context/CartContext';
+
 import './CartItem.css'
-import React, { useEffect, useState } from 'react'
+import Icon from '@mdi/react';
+import { mdiDeleteForever } from '@mdi/js';
+
+import { useCartItem } from '../../../hooks/useCartItem';
 
 const CartItem = (prod) => {
-    const { cart, deleteItem, modifyQuantity } = useCart()
-    const [itemQuantity, setItemQuantity] = useState(prod.quantity)
-    const [subtotal, setSubtotal] = useState(prod.precio * prod.quantity)
 
-
-
-
-    const eliminar = () => {
-        deleteItem(prod.id)    
-    }
-
-    const decrement = () => {
-        if (1 < itemQuantity) {
-            setItemQuantity(itemQuantity - 1)
-        }
-    }
-    const increment = () => {
-         if (itemQuantity < prod.stock) {
-            setItemQuantity(itemQuantity + 1)    
-        }    
-    }
-
-
-    useEffect(() => {
-        modifyQuantity(prod.id, itemQuantity)
-        setSubtotal(itemQuantity * prod.precio)
-    }, [itemQuantity])
+    const { eliminar, decrement, increment, itemQuantity, subtotal } = useCartItem(prod)
 
     return (
         <div className="CartItem">
-            <h3>{prod.nombre}</h3>
-            <div>
+            <div className='CartItem__start'>
                 <img src={`../src/assets/productsImg/${prod.category}/${prod.img}`} width={100} />
-                <p className="CartItem__precio"> $ {prod.precio}</p>
-                <div className="CartItem__quantity">
-                    <button onClick={decrement}>-</button>
-                    <p>{itemQuantity}</p>
-                    <button onClick={increment}>+</button>
+                <div className="CartItem__infoProduct">
+                    <h3>{prod.nombre}</h3>
+                    {prod.molienda ?? <p className="CartItem__molienda">Molienda: {prod.molienda}</p>}
+                    <p className="CartItem__precio"> $ {prod.precio}</p>
+                    <div className="CartItem__quantity">
+                        <button onClick={decrement}>-</button>
+                        <p>{itemQuantity}</p>
+                        <button onClick={increment}>+</button>
+                    </div>
                 </div>
-                <p>{subtotal}</p>
-                <button onClick={eliminar}>Eliminar</button>
+
+            </div>
+            <div className='CartItem__end'>
+                <p className='CartItem__subtotal'>$ {subtotal}</p>
+                <div onClick={eliminar}className='CartItem__deleteItem'><Icon path={mdiDeleteForever} color="red" size={1} /></div>
             </div>
 
         </div>
