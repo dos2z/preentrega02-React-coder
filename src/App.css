@@ -66,7 +66,7 @@ body {
     text-align: center;
     padding: 10px;
     border-radius: 10px;
-    border: 3px outset #a43eda;
+    border: 3px outset #7e29ab;
     box-shadow: -5px 5px 10px black;
 
     & button {

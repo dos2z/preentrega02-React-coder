@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 const Notification = ({ message, severity, tipe, exitClick }) => {
-    //message recibe el mensaje, severity recibe success, danger, warning o default, tipe recibe alert, question o notification
+    //message recibe el mensaje, severity recibe success, danger, warning o default, tipe recibe alert o notification
     //Los estilos se definieron en App.css
 
     if (message === "") {

@@ -42,7 +42,7 @@ const Cart = () => {
         <div className="Cart__orderSummary">
           <h2>Total:</h2>
           <p>Cantidad de productos: {totalQuantity}</p>
-          <h3>Precio final: {finalPrice}</h3>
+          <h3>Precio final: $ {finalPrice}</h3>
           <Link to="/checkout" className='Cart__checkoutBtn'><button>Continuar compra</button></Link>
           <div className='deleteCart' title='Eliminar carrito'>
             <Icon path={mdiCartRemove} size={1.5} onClick={vaciarCarrito} />

@@ -3,10 +3,11 @@ import Loading from "../Loading/Loading"
 import { useEffect, useState } from "react"
 import { useCart } from "../../context/CartContext"
 import { db } from "../../services/firebase"
-import { addDoc, collection, documentId, getDocs, query, where, writeBatch } from "firebase/firestore"
+import { addDoc, collection } from "firebase/firestore"
 import { stockChecker } from "../../services/firebase/stockChecker"
 import OrderSuccess from "./OrderSuccess/OrderSuccess"
 import { useNotifiNdAlert } from "../../context/NotifiNdAlert"
+import Brief from "./Brief/Brief"
 
 const Checkout = () => {
   const { cart, totalQuantity, finalPrice, clearCart } = useCart()
@@ -114,19 +115,33 @@ const Checkout = () => {
 
   return (
     <div className="Checkout">
-      <h1>Datos de envío</h1>
-      <form onChange={evt => { setIsComplete(!isComplete) }}>
-        <input type="text" value={buyerName} onChange={val => setBuyerName(val.target.value)} placeholder="Nombre" />
-        <input type="text" value={buyerStreet} onChange={val => setBuyerStreet(val.target.value)} placeholder="Calle" />
-        <input type="number" value={buyerStreetNumber} onChange={val => setBuyerStreetNumber(val.target.value)} placeholder="S/N" min="0" />
-        <input type="text" value={buyerCity} onChange={val => setBuyerCity(val.target.value)} placeholder="Ciudad" />
-        <input type="text" value={buyerProvince} onChange={val => setBuyerProvince(val.target.value)} placeholder="Provincia" />
-        <input type="number" value={BuyerCP} onChange={val => setBuyerCP(val.target.value)} placeholder="Codigo postal" min="0" />
-        <input type="email" value={buyerEmail} onChange={val => setBuyerEmail(val.target.value)} placeholder="Correo electrónico" />
-        <input type="email" value={buyerEmailCompar} onChange={val => setBuyerEmailCompar(val.target.value)} placeholder="Repita el correo" />
-        <input type="phone" value={buyerPhone} onChange={val => setBuyerPhone(val.target.value)} placeholder="Teléfono" />
-         {show ? <button onClick={createOrder}>Generar orden</button> : <button className="waiting" onClick={waiting}>Completá todos los datos</button>}
-      </form>
+      <div className="Checkout__Form">
+        <h1>Datos de envío</h1>
+        <form onChange={evt => { setIsComplete(!isComplete) }} >
+          <input type="text" value={buyerName} onChange={val => setBuyerName(val.target.value)} placeholder="Nombre" />
+          <input type="text" value={buyerStreet} onChange={val => setBuyerStreet(val.target.value)} placeholder="Calle" />
+          <input type="number" value={buyerStreetNumber} onChange={val => setBuyerStreetNumber(val.target.value)} placeholder="S/N" min="0" />
+          <input type="text" value={buyerCity} onChange={val => setBuyerCity(val.target.value)} placeholder="Ciudad" />
+          <input type="text" value={buyerProvince} onChange={val => setBuyerProvince(val.target.value)} placeholder="Provincia" />
+          <input type="number" value={BuyerCP} onChange={val => setBuyerCP(val.target.value)} placeholder="Codigo postal" min="0" />
+          <input type="email" value={buyerEmail} onChange={val => setBuyerEmail(val.target.value)} placeholder="Correo electrónico" />
+          <input type="email" value={buyerEmailCompar} onChange={val => setBuyerEmailCompar(val.target.value)} placeholder="Repita el correo" />
+          <input type="phone" value={buyerPhone} onChange={val => setBuyerPhone(val.target.value)} placeholder="Teléfono" />
+          {show ? <button onClick={createOrder}>Generar orden</button> : <button className="waiting" onClick={waiting}>Completá todos los datos</button>}
+        </form>
+      </div>
+      <div className="Checkout__Brief">
+        <h2>Resumen de compra</h2>
+        <h3>Precio: $ {finalPrice}</h3>
+        
+        {cart.map((prod) => {
+          return (
+            <Brief key={prod.id} {...prod}></Brief>
+          )
+        })
+        }
+      </div>
+
     </div>
   )
 }

@@ -26,7 +26,7 @@ const ItemDetail = (product) => {
   return (
     <div className="itemDetail">
       <div className="itemDetailImgContainer">
-        <img src={`../src/assets/productsImg/${product.category}/${product.img}`} alt={product.nombre} />
+        <img src={product.img} alt={product.nombre} />
       </div>
       <div className='itemDetail__detailContainer'>
         <h3 className="itemDetailTitle">{product.nombre}</h3>

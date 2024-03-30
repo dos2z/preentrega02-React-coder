@@ -12,7 +12,7 @@ const CartItem = (prod) => {
     return (
         <div className="CartItem">
             <div className='CartItem__start'>
-                <img src={`../src/assets/productsImg/${prod.category}/${prod.img}`} width={100} />
+                <img src={prod.img} width={100} />
                 <div className="CartItem__infoProduct">
                     <h3>{prod.nombre}</h3>
                     {prod.molienda ?? <p className="CartItem__molienda">Molienda: {prod.molienda}</p>}

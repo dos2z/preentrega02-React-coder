@@ -12,7 +12,7 @@ const Item = (prod) => {
     return (
         <div className='item'>
             <div className='itemImgContainer'>
-                <img src={`../src/assets/productsImg/${prod.category}/${prod.img}`} alt={prod.nombre} />
+                <img src={prod.img} alt={prod.nombre} />
             </div>
             <h3>{prod.nombre}</h3>
             <p className='itemPrice'>$ {prod.precio ?? prod.precio250g}</p>
