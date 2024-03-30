@@ -14,7 +14,6 @@ const Cart = () => {
 
   const vaciarCarrito = () => {
     clearCart()
-    console.log(cart.lenght);
 
   }
 

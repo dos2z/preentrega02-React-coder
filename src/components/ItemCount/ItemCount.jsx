@@ -1,13 +1,15 @@
 import './ItemCount.css'
 import { Link } from 'React-router-dom'
-import { useState } from 'react'
 import { useCart } from '../../context/CartContext'
 import { useItemCount } from '../../hooks/useItemCount'
+import { useNotifiNdAlert } from '../../context/NotifiNdAlert'
 
 
 const ItemCount = ({ product }) => {
   const { addToCart, decrement, increment, contador, molienda, selectMolienda } = useItemCount(product)
   const { isInCart } = useCart()
+  const { setNotification, setAlert } = useNotifiNdAlert()
+
   const productExist = isInCart(product.id)
   const isCoffee = product.category
   let visibility;
@@ -17,9 +19,21 @@ const ItemCount = ({ product }) => {
     visibility = "noVisible"
   }
 
-  const verMol = () => {
-    console.log(molienda);
+
+
+  const addingToCart = () => {
+    if ((isCoffee == "cafe") && (!molienda)) {
+      setAlert("Para este producto debe seleccionar la molienda", "default", "alert")
+    } else {
+      setNotification(`Se agrego ${product.nombre} al carrito x ${contador}`, "success", "notification");
+      addToCart()
+    }
+
   }
+
+
+
+
 
   return (
     <div className="itemDetailContador">
@@ -48,7 +62,7 @@ const ItemCount = ({ product }) => {
               <p className="iDCNumber">{contador}</p>
               <button onClick={increment} className="iDCButton"> + </button>
             </div>
-            <button className="iDCaddCartButton" onClick={addToCart}>Agregar al carrito</button>
+            <button className="iDCaddCartButton" onClick={addingToCart}>Agregar al carrito</button>
           </div>
 
 
