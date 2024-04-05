@@ -2,14 +2,29 @@ import { createContext, useContext, useState } from 'react';
 
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([])
+//rescata el cart de localStorage si existe
+const memoryCart = JSON.parse(localStorage.getItem("cart")) ?? [];
 
+
+
+export const CartProvider = ({ children }) => {
+    const [cart, setCart] = useState(memoryCart)
+    
+    
+
+    //funciones para actualizar el localStorage
+    const storageUpdated = ()=>{
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }
+    const clearStorage = ()=>{
+        localStorage.clear()
+    }
 
     // funcion que agrega el producto al carrito
     const addItem = (prodToAdd) => {
         if (!isInCart(prodToAdd.id)) {
             setCart([...cart, prodToAdd])
+            storageUpdated()
         } 
     }
     //pregunta si existe el producto en el carrito
@@ -20,10 +35,12 @@ export const CartProvider = ({ children }) => {
     const deleteItem = (id) => {
         const cartUpdated = cart.filter(prod => prod.id != id)
         setCart(cartUpdated)
+        storageUpdated()
     }
     //funcion que limpia el carrito
     const clearCart = () => {
         setCart([])
+        clearStorage()
     }
   
     // funcion que modifica cantidad del producto
@@ -36,6 +53,7 @@ export const CartProvider = ({ children }) => {
             }
         }) 
         setCart(cartUpdated)
+        storageUpdated()
     }
 
 
