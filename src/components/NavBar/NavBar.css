@@ -35,7 +35,10 @@ nav > div {
 }
 
 .active {
-    outline: solid;
+    /* outline: solid; */
+    border-radius: 10px 10px 0 0;
+    border-bottom: solid;
+    box-shadow: 0 2px 5px black;
 }
 
 .linkCategory:hover{
@@ -46,5 +49,7 @@ nav > div {
 .nav__cartDiv{
     display: flex;
     justify-content: end;
+    align-items: center;
+    gap: 20px;
     
 }

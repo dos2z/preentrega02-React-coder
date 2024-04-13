@@ -1,0 +1,6 @@
+.UserWidget{
+    cursor: pointer;
+}
+.UserWidget:hover div{
+    display: block;
+}

@@ -1,9 +1,17 @@
 import "./NavBar.css"
-import CartWidget from "../CartWidget/CartWidget"
+import CartWidget from "./CartWidget/CartWidget"
 import { Link, NavLink } from 'React-router-dom'
+import UserWidget from "./userWidget/UserWidget";
+import { useUserContext } from "../../context/UserContext";
+
+
+
+
+
 
 
 const NavBar = () => {
+    const { userName } = useUserContext()
 
 
     return (
@@ -23,6 +31,9 @@ const NavBar = () => {
             </div>
 
             <div className="nav__cartDiv">
+                <h3>{userName}</h3>
+                <UserWidget />
+
                 <CartWidget />
             </div>
 

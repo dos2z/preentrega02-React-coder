@@ -9,6 +9,7 @@
 .cartWidget:hover{
     border-radius: 10px;
     border: solid white;
+    box-shadow: 0 2px 5px black;
 }
 
 .cartWidgetImg{

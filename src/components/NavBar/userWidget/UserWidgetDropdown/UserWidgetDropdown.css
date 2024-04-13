@@ -1,0 +1,19 @@
+.UserWidgetDropdownLogIn{
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 25px;
+    z-index: 10;
+    background-color: white;
+    padding: 10px;
+    border: solid;
+    & ul{
+        list-style: none;
+        & li{
+            margin: 10px;
+        }
+    }
+}
+.UserWidgetDropdownLogIn:hover{
+    display: block;
+}

@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from 'react';
 
 export const CartContext = createContext();
 
-//rescata el cart de localStorage si existe
+//rescata el cart de localStorage si existe, antes de entrar al CartProvider
 const memoryCart = JSON.parse(localStorage.getItem("cart")) ?? [];
 
 
