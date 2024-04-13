@@ -9,9 +9,6 @@ import {
 } from "firebase/auth";
 
 
-
-
-
 export const authentication = () => {
 
 

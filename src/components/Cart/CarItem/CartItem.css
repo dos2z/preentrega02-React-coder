@@ -12,10 +12,12 @@
     justify-content: start;
     align-items: center;
     gap: 30px;
+    padding-bottom: 20px;
 
 
     .CartItem__infoProduct {
-        height: 100px;
+        height: 150px;
+        overflow: scroll;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -28,6 +30,7 @@
         justify-content: center;
         background-color: white;
         border: 1px solid;
+
 
         & button {
             width: 15px;
